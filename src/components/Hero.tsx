@@ -19,7 +19,7 @@ export default function Hero() {
     <section className="relative flex h-screen w-full overflow-hidden">
       {/* LEFT PANEL */}
       <motion.div
-        initial={{ x: "-100vw" }}
+        initial={{ x: "-100%" }}
         animate={{ x: 0 }}
         transition={SPRING}
         className="relative flex h-full w-1/2 overflow-hidden bg-[#F0EFEA]"
@@ -91,7 +91,7 @@ export default function Hero() {
 
       {/* RIGHT PANEL */}
       <motion.div
-        initial={{ x: "100vw" }}
+        initial={{ x: "100%" }}
         animate={{ x: 0 }}
         transition={SPRING}
         className="relative flex h-full w-1/2 overflow-hidden bg-[#0A0F1E]"
