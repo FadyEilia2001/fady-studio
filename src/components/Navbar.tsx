@@ -62,7 +62,7 @@ export default function Navbar() {
 
       <a
         href="#contact"
-        className="flex items-center gap-2 rounded-full border border-white/60 px-5 py-2 text-xs tracking-widest font-medium text-white hover:bg-white hover:text-[#0A0F1E] transition-all duration-200"
+        className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs tracking-widest font-medium text-white backdrop-blur-md backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.4)] transition-all duration-200 hover:bg-white/20"
       >
         LET&apos;S BUILD <span className="text-sm">↗</span>
       </a>

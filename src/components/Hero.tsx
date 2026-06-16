@@ -82,7 +82,7 @@ export default function Hero() {
           >
             <a
               href="#work"
-              className="inline-flex items-center gap-3 rounded-none bg-[#1A1A1A] px-7 py-4 text-xs tracking-widest font-medium uppercase text-white hover:bg-[#FF4500] transition-colors duration-300"
+              className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-[#0A0F1E]/50 px-7 py-4 text-xs tracking-widest font-medium uppercase text-white backdrop-blur-md backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 hover:bg-[#FF4500]/40"
             >
               SEE MY WORK <span className="text-base">↗</span>
             </a>
