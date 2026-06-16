@@ -1,11 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 
 const SPRING = { type: "spring", stiffness: 80, damping: 18 } as const;
 
-const textVariants = {
+const textVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: (delay: number) => ({
     opacity: 1,
@@ -33,7 +33,7 @@ export default function Hero() {
         />
 
         {/* Text overlay */}
-        <div className="absolute inset-0 flex flex-col justify-center px-12 pb-16 pt-24">
+        <div className="absolute inset-0 z-10 flex flex-col justify-center px-12 pb-16 pt-24">
           {/* Tagline */}
           <motion.div
             custom={0.7}
