@@ -29,7 +29,8 @@ export default function Hero() {
           alt="Fady Eilia"
           fill
           priority
-          className="object-cover object-right"
+          sizes="50vw"
+          className="object-cover object-[9%_center]"
         />
 
         {/* Text overlay */}
@@ -101,7 +102,8 @@ export default function Hero() {
           alt=""
           fill
           priority
-          className="object-cover object-left"
+          sizes="50vw"
+          className="object-cover object-[91%_center]"
         />
       </motion.div>
     </section>
