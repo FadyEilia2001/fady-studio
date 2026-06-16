@@ -25,12 +25,12 @@ export default function Hero() {
         className="relative flex h-full w-1/2 overflow-hidden bg-[#F0EFEA]"
       >
         <Image
-          src="/assets/darkHeroLeft-upscaled-20260615-223244.webp"
+          src="/assets/leftHeroImageCropped-upscaled-20260616-012444.webp"
           alt="Fady Eilia"
           fill
           priority
           sizes="50vw"
-          className="object-cover object-[9%_center]"
+          className="object-cover object-right"
         />
 
         {/* Text overlay */}
@@ -98,12 +98,12 @@ export default function Hero() {
         className="relative flex h-full w-1/2 overflow-hidden bg-[#0A0F1E]"
       >
         <Image
-          src="/assets/darkHeroRight-upscaled-20260615-223839.webp"
+          src="/assets/rightHeroImageCropped-upscaled-20260616-012529.webp"
           alt=""
           fill
           priority
           sizes="50vw"
-          className="object-cover object-[91%_center]"
+          className="object-cover object-left"
         />
       </motion.div>
     </section>
