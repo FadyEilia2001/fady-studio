@@ -1,0 +1,22 @@
+{
+  "Nav": {
+    "work": "WORK",
+    "systems": "SYSTEMS",
+    "insights": "INSIGHTS",
+    "about": "ABOUT",
+    "contact": "CONTACT",
+    "cta": "LET'S BUILD"
+  },
+  "Hero": {
+    "tagline": "APPS. AUTOMATION. RESULTS.",
+    "headlineLead": "I BUILD THINGS THAT MAKE YOUR BUSINESS",
+    "headlineAccent": "WORK HARDER.",
+    "subtitle": "From phone apps to website automation — I help you reach more customers and build a reputation that sticks.",
+    "cta": "SEE MY WORK"
+  },
+  "LanguageToggle": {
+    "label": "Switch language",
+    "en": "EN",
+    "ar": "ع"
+  }
+}

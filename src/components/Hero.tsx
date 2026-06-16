@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 const SPRING = { type: "spring", stiffness: 80, damping: 18 } as const;
@@ -15,8 +16,13 @@ const textVariants: Variants = {
 };
 
 export default function Hero() {
+  const t = useTranslations("Hero");
   return (
-    <section className="relative flex h-screen w-full overflow-hidden">
+    // Keep the hero visually LTR in both languages: the two image halves are a
+    // fixed composition that must join at the center seam. Flipping the panels
+    // for RTL would split the subject to opposite edges. Only the copy
+    // translates here; sections below the hero flow with the page direction.
+    <section dir="ltr" className="relative flex h-screen w-full overflow-hidden">
       {/* LEFT PANEL */}
       <motion.div
         initial={{ x: "-100%" }}
@@ -44,7 +50,7 @@ export default function Hero() {
             className="mb-6"
           >
             <p className="text-xs tracking-[0.3em] uppercase font-medium text-[#1A1A1A]">
-              APPS. AUTOMATION. RESULTS.
+              {t("tagline")}
             </p>
             <div className="mt-2 h-[2px] w-8 bg-[#FF4500]" />
           </motion.div>
@@ -57,8 +63,8 @@ export default function Hero() {
             variants={textVariants}
             className="mb-6 text-4xl font-black uppercase leading-[1.05] tracking-tight text-[#1A1A1A] xl:text-5xl"
           >
-            I BUILD THINGS THAT MAKE YOUR BUSINESS{" "}
-            <span className="text-[#FF4500]">WORK HARDER.</span>
+            {t("headlineLead")}{" "}
+            <span className="text-[#FF4500]">{t("headlineAccent")}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -69,8 +75,7 @@ export default function Hero() {
             variants={textVariants}
             className="mb-10 max-w-xs text-sm leading-relaxed text-[#666666]"
           >
-            From phone apps to website automation — I help you reach more
-            customers and build a reputation that sticks.
+            {t("subtitle")}
           </motion.p>
 
           {/* CTA */}
@@ -84,7 +89,7 @@ export default function Hero() {
               href="#work"
               className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-[#0A0F1E]/50 px-7 py-4 text-xs tracking-widest font-medium uppercase text-white backdrop-blur-md backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 hover:bg-[#FF4500]/40"
             >
-              SEE MY WORK <span className="text-base">↗</span>
+              {t("cta")} <span className="text-base">↗</span>
             </a>
           </motion.div>
         </div>

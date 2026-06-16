@@ -1,17 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import { Link } from "@/i18n/navigation";
+import LanguageToggle from "./LanguageToggle";
 
-const NAV_LINKS = [
-  { label: "WORK", href: "#work" },
-  { label: "SYSTEMS", href: "#systems" },
-  { label: "INSIGHTS", href: "#insights" },
-  { label: "ABOUT", href: "#about" },
-  { label: "CONTACT", href: "#contact" },
-];
+const NAV_KEYS = [
+  { key: "work", href: "#work" },
+  { key: "systems", href: "#systems" },
+  { key: "insights", href: "#insights" },
+  { key: "about", href: "#about" },
+  { key: "contact", href: "#contact" },
+] as const;
 
 export default function Navbar() {
+  const t = useTranslations("Nav");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -22,6 +26,10 @@ export default function Navbar() {
 
   return (
     <motion.nav
+      // Keep the bar physically LTR: it sits over a fixed hero (light on the
+      // left, dark on the right), so positions must not flip in Arabic — only
+      // the labels translate. Sections below the hero flow with the page dir.
+      dir="ltr"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.8, duration: 0.4, ease: "easeOut" }}
@@ -31,19 +39,19 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      {/* Left group: logo + links */}
+      {/* Left group: logo + links (over the light side of the hero) */}
       <div className="flex items-center gap-10">
-        <a
-          href="#"
+        <Link
+          href="/"
           className={`text-xl font-black tracking-tight transition-colors duration-300 ${
             scrolled ? "text-white" : "text-[#1A1A1A]"
           }`}
         >
           FE<span className="text-[#FF4500]">.</span>
-        </a>
+        </Link>
 
         <ul className="flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
+          {NAV_KEYS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
@@ -53,19 +61,23 @@ export default function Navbar() {
                     : "text-[#1A1A1A]/70 hover:text-[#1A1A1A]"
                 }`}
               >
-                {link.label}
+                {t(link.key)}
               </a>
             </li>
           ))}
         </ul>
       </div>
 
-      <a
-        href="#contact"
-        className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs tracking-widest font-medium text-white backdrop-blur-md backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.4)] transition-all duration-200 hover:bg-white/20"
-      >
-        LET&apos;S BUILD <span className="text-sm">↗</span>
-      </a>
+      {/* Right group: language toggle + CTA (over the dark side of the hero) */}
+      <div className="flex items-center gap-4">
+        <LanguageToggle />
+        <a
+          href="#contact"
+          className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2 text-xs tracking-widest font-medium text-white backdrop-blur-md backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.4)] transition-all duration-200 hover:bg-white/20"
+        >
+          {t("cta")} <span className="text-sm">↗</span>
+        </a>
+      </div>
     </motion.nav>
   );
 }
