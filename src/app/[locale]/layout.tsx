@@ -1,25 +1,36 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Cairo } from "next/font/google";
+import { Barlow_Condensed, DM_Sans, Space_Mono, Cairo } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, localeDirection, type Locale } from "@/i18n/routing";
 import "../globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Display font — condensed, bold, used for headings.
+const barlow = Barlow_Condensed({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "900"],
+});
+
+// Body font.
+const dmSans = DM_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Mono font — used for eyebrow labels and metadata.
+const spaceMono = Space_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
-// Arabic-capable font, applied when the active locale is Arabic.
+// Arabic-capable font, applied for every role when the locale is Arabic.
 const cairo = Cairo({
   variable: "--font-arabic",
   subsets: ["arabic", "latin"],
+  weight: ["400", "500", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -51,7 +62,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html
       lang={locale}
       dir={dir}
-      className={`${geistSans.variable} ${geistMono.variable} ${cairo.variable} h-full antialiased`}
+      className={`${barlow.variable} ${dmSans.variable} ${spaceMono.variable} ${cairo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>{children}</NextIntlClientProvider>

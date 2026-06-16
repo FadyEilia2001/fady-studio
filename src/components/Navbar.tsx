@@ -14,7 +14,7 @@ const NAV_KEYS = [
   { key: "contact", href: "#contact" },
 ] as const;
 
-export default function Navbar() {
+export default function Navbar({ solid = false }: { solid?: boolean }) {
   const t = useTranslations("Nav");
   const [scrolled, setScrolled] = useState(false);
 
@@ -24,6 +24,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // `solid` forces the dark, readable bar on sub-pages that have no hero behind
+  // the bar. On the home page it stays transparent until scrolled past the hero.
+  const dark = solid || scrolled;
+
   return (
     <motion.nav
       // Keep the bar physically LTR: it sits over a fixed hero (light on the
@@ -32,9 +36,9 @@ export default function Navbar() {
       dir="ltr"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 0.8, duration: 0.4, ease: "easeOut" }}
+      transition={{ delay: solid ? 0 : 0.8, duration: 0.4, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 transition-all duration-500 ${
-        scrolled
+        dark
           ? "backdrop-blur-md bg-[#0A0F1E]/80 border-b border-white/10"
           : "bg-transparent"
       }`}
@@ -44,7 +48,7 @@ export default function Navbar() {
         <Link
           href="/"
           className={`text-xl font-black tracking-tight transition-colors duration-300 ${
-            scrolled ? "text-white" : "text-[#1A1A1A]"
+            dark ? "text-white" : "text-[#1A1A1A]"
           }`}
         >
           FE<span className="text-[#FF4500]">.</span>
@@ -56,7 +60,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 className={`text-xs tracking-widest font-medium transition-colors duration-200 ${
-                  scrolled
+                  dark
                     ? "text-white/80 hover:text-white"
                     : "text-[#1A1A1A]/70 hover:text-[#1A1A1A]"
                 }`}
