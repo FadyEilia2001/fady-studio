@@ -22,7 +22,7 @@ export default function Hero() {
         initial={{ x: "-100vw" }}
         animate={{ x: 0 }}
         transition={SPRING}
-        className="relative flex w-1/2 overflow-hidden bg-[#F0EFEA]"
+        className="relative flex h-full w-1/2 overflow-hidden bg-[#F0EFEA]"
       >
         <Image
           src="/assets/darkHeroLeft-upscaled-20260615-223244.webp"
@@ -94,7 +94,7 @@ export default function Hero() {
         initial={{ x: "100vw" }}
         animate={{ x: 0 }}
         transition={SPRING}
-        className="relative flex w-1/2 overflow-hidden bg-[#0A0F1E]"
+        className="relative flex h-full w-1/2 overflow-hidden bg-[#0A0F1E]"
       >
         <Image
           src="/assets/darkHeroRight-upscaled-20260615-223839.webp"
