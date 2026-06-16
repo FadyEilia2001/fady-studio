@@ -31,22 +31,34 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <a href="#" className="text-xl font-black tracking-tight text-white">
-        FE<span className="text-[#FF4500]">.</span>
-      </a>
+      {/* Left group: logo + links */}
+      <div className="flex items-center gap-10">
+        <a
+          href="#"
+          className={`text-xl font-black tracking-tight transition-colors duration-300 ${
+            scrolled ? "text-white" : "text-[#1A1A1A]"
+          }`}
+        >
+          FE<span className="text-[#FF4500]">.</span>
+        </a>
 
-      <ul className="flex items-center gap-10">
-        {NAV_LINKS.map((link) => (
-          <li key={link.href}>
-            <a
-              href={link.href}
-              className="text-xs tracking-widest font-medium text-white/80 hover:text-white transition-colors duration-200"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+        <ul className="flex items-center gap-8">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className={`text-xs tracking-widest font-medium transition-colors duration-200 ${
+                  scrolled
+                    ? "text-white/80 hover:text-white"
+                    : "text-[#1A1A1A]/70 hover:text-[#1A1A1A]"
+                }`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <a
         href="#contact"

@@ -34,7 +34,7 @@ export default function Hero() {
         />
 
         {/* Text overlay */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-center px-12 pb-16 pt-24">
+        <div className="absolute inset-y-0 left-0 z-10 flex w-[60%] flex-col justify-center px-12 pb-16 pt-24">
           {/* Tagline */}
           <motion.div
             custom={0.7}
@@ -55,7 +55,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             variants={textVariants}
-            className="mb-6 text-5xl font-black uppercase leading-[1.05] tracking-tight text-[#1A1A1A] xl:text-6xl"
+            className="mb-6 text-4xl font-black uppercase leading-[1.05] tracking-tight text-[#1A1A1A] xl:text-5xl"
           >
             I BUILD THINGS THAT MAKE YOUR BUSINESS{" "}
             <span className="text-[#FF4500]">WORK HARDER.</span>
