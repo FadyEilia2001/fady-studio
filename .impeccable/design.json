@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "title": "Design System: Fady Eilia Studio",
+  "extensions": {
+    "colorMeta": {
+      "ember": { "role": "primary", "displayName": "Ember Orange", "canonical": "#ff4d00", "tonalRamp": ["#2e0e00", "#5c1c00", "#8a2a00", "#b83800", "#e64600", "#ff4d00", "#ff7a40", "#ffb894"] },
+      "paper": { "role": "neutral", "displayName": "Daylight Paper", "canonical": "#faf9f6", "tonalRamp": ["#1a1a18", "#33332f", "#4d4c47", "#807e76", "#b3b1a8", "#d9d7cf", "#efeee9", "#faf9f6"] },
+      "ink": { "role": "neutral", "displayName": "Near-Black Ink", "canonical": "#141414", "tonalRamp": ["#141414", "#2b2b2b", "#444444", "#6b6b6b", "#969696", "#c2c2c2", "#e2e2e2", "#f5f5f5"] },
+      "midnight": { "role": "neutral", "displayName": "Midnight Navy", "canonical": "#0a0f1e", "tonalRamp": ["#0a0f1e", "#11182e", "#1b2542", "#2c3a5e", "#475680", "#7282a8", "#9aa0ad", "#cdd2db"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero promise and section H2s. Barlow Condensed 900, uppercase, packed tight — the loudest voice." },
+      "headline": { "displayName": "Headline", "purpose": "Card titles. Barlow Condensed 700, uppercase." },
+      "lead": { "displayName": "Lead", "purpose": "Section intros and About body — the warm, human register. DM Sans 1.125rem." },
+      "body": { "displayName": "Body", "purpose": "Default reading copy. DM Sans 1rem, 65–75ch measure." },
+      "label": { "displayName": "Label / Eyebrow", "purpose": "Space Mono 0.7rem, 0.2em tracking, uppercase. Auto-untracks in Arabic." }
+    },
+    "shadows": [
+      { "name": "glass-float", "value": "0 8px 32px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.3)", "purpose": "Hero/navbar CTAs floating over imagery only. The inset highlight sells the glass." }
+    ],
+    "motion": [
+      { "name": "reveal-rise", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Scroll fade-and-rise (Reveal): y 24→0, opacity 0→1, 0.6s. Needs a reduced-motion crossfade." },
+      { "name": "hero-spring", "value": "spring(stiffness 80, damping 18)", "purpose": "Hero panel slam from opposite edges to the center seam." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "shell", "value": "1400px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Glass CTA",
+      "kind": "button",
+      "refersTo": "button-glass",
+      "description": "Primary call-to-action floating over hero imagery; midnight glass with ember hover.",
+      "html": "<a class=\"ds-btn-glass\" href=\"#\">SEE MY WORK <span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-btn-glass { display:inline-flex; align-items:center; gap:12px; border-radius:9999px; border:1px solid rgba(255,255,255,0.15); background:rgba(10,15,30,0.5); padding:16px 28px; font-family:'DM Sans',system-ui,sans-serif; font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#fff; text-decoration:none; -webkit-backdrop-filter:blur(12px) saturate(1.5); backdrop-filter:blur(12px) saturate(1.5); box-shadow:0 8px 32px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.3); transition:background .3s ease; } .ds-btn-glass:hover { background:rgba(255,77,0,0.4); } .ds-btn-glass:focus-visible { outline:2px solid #ff4d00; outline-offset:3px; }"
+    },
+    {
+      "name": "Accent Button",
+      "kind": "button",
+      "refersTo": "button-accent",
+      "description": "Solid ember conversion button (contact submit).",
+      "html": "<button class=\"ds-btn-accent\">SEND MESSAGE</button>",
+      "css": ".ds-btn-accent { border:none; border-radius:9999px; background:#ff4d00; color:#fff; padding:16px 32px; font-family:'Barlow Condensed',system-ui,sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:background .2s ease; } .ds-btn-accent:hover { background:rgba(255,77,0,0.9); } .ds-btn-accent:focus-visible { outline:2px solid #141414; outline-offset:2px; }"
+    },
+    {
+      "name": "Eyebrow Label",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Mono tracked uppercase section kicker with leading ember rule.",
+      "html": "<div class=\"ds-eyebrow\"><span class=\"ds-eyebrow__rule\" aria-hidden=\"true\"></span><span class=\"ds-eyebrow__text\">WHAT I DO</span></div>",
+      "css": ".ds-eyebrow { display:flex; align-items:center; gap:12px; } .ds-eyebrow__rule { display:inline-block; height:2px; width:24px; background:#ff4d00; } .ds-eyebrow__text { font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:#6b6b6b; }"
+    },
+    {
+      "name": "Display Heading",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Section H2 with single ember accent word.",
+      "html": "<h2 class=\"ds-display\">Systems that <span class=\"ds-display__accent\">scale</span> without the chaos.</h2>",
+      "css": ".ds-display { margin:0; font-family:'Barlow Condensed',system-ui,sans-serif; font-weight:900; text-transform:uppercase; font-size:clamp(2.5rem,6vw,5.25rem); line-height:0.95; letter-spacing:-0.02em; color:#141414; text-wrap:balance; max-width:18ch; } .ds-display__accent { color:#ff4d00; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card-service",
+      "description": "Flat card in a hairline gap-px grid; ember top-rule scales in on hover.",
+      "html": "<div class=\"ds-card-service\"><span class=\"ds-card-service__rule\" aria-hidden=\"true\"></span><span class=\"ds-card-service__num\">01</span><h3 class=\"ds-card-service__title\">Custom Apps &amp; Websites</h3><p class=\"ds-card-service__desc\">Phone apps and websites built for your customers, not just for show.</p></div>",
+      "css": ".ds-card-service { position:relative; overflow:hidden; background:#faf9f6; padding:40px; } .ds-card-service__rule { position:absolute; inset-inline:0; top:0; height:2px; background:#ff4d00; transform:scaleX(0); transform-origin:left; transition:transform .3s ease; } .ds-card-service:hover .ds-card-service__rule { transform:scaleX(1); } .ds-card-service__num { display:block; font-family:'Barlow Condensed',system-ui,sans-serif; font-size:3rem; line-height:1; color:rgba(255,77,0,0.3); margin-bottom:24px; } .ds-card-service__title { margin:0 0 16px; font-family:'Barlow Condensed',system-ui,sans-serif; font-weight:700; text-transform:uppercase; font-size:1.875rem; line-height:1.1; color:#141414; transition:color .2s ease; } .ds-card-service:hover .ds-card-service__title { color:#ff4d00; } .ds-card-service__desc { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:#6b6b6b; line-height:1.6; }"
+    },
+    {
+      "name": "Underline Input",
+      "kind": "input",
+      "refersTo": "input-underline",
+      "description": "Borderless underline field on the midnight surface; underline turns ember on focus.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Your name\" />",
+      "css": ".ds-input { width:100%; background:transparent; border:none; border-bottom:1px solid rgba(255,255,255,0.12); padding:16px 0; color:#f5f5f5; font-family:'DM Sans',system-ui,sans-serif; font-size:1rem; outline:none; transition:border-color .2s ease; } .ds-input::placeholder { color:#9aa0ad; } .ds-input:focus { border-bottom-color:#ff4d00; }"
+    },
+    {
+      "name": "Tag Chip",
+      "kind": "chip",
+      "refersTo": "chip-tag",
+      "description": "Static capability/category metadata pill.",
+      "html": "<span class=\"ds-chip\">Web Apps</span>",
+      "css": ".ds-chip { display:inline-block; border:1px solid #e6e3dc; border-radius:9999px; padding:4px 12px; font-family:'DM Sans',system-ui,sans-serif; font-size:0.75rem; color:#6b6b6b; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Workshop Window",
+    "overview": "The storefront of a maker who happens to be technical — a window into a workshop where real things get built for real businesses. The system runs on a deliberate two-surface split: a warm, paper-toned daylight surface where the work is shown plainly, and a deep midnight surface where the brand turns up the volume at the moments that ask for commitment. The voice is bold in execution, human in tone: Barlow Condensed set black/uppercase/tight carries the hierarchy, and ember-orange is used like a highlighter, never like paint.",
+    "keyCharacteristics": [
+      "Two committed surfaces — warm paper daylight + midnight-navy spotlight — never a muddy middle gray.",
+      "Condensed, black, uppercase display type carrying the hierarchy; the page talks in headlines.",
+      "Ember accent rationed to ≤10% of any surface; rarity is the point.",
+      "Bilingual by design: Latin condensed/tracked, Arabic (Cairo) untracked and upright — both first-class.",
+      "Flat by default; depth appears only as glass on floating controls and hairline tonal grids."
+    ],
+    "rules": [
+      { "name": "The Highlighter Rule", "body": "Ember marks, it never fills areas. One accent word per headline, one rule per label, one filled button per view.", "section": "colors" },
+      { "name": "The No-Middle-Gray Rule", "body": "Every surface commits to paper or midnight. Drama comes from the jump between the two, not from a dimmer switch.", "section": "colors" },
+      { "name": "The Headline-Is-Loudest Rule", "body": "Display type is the largest thing on any surface, including the hero. No body or UI element out-scales a display heading in its own viewport.", "section": "typography" },
+      { "name": "The One-Word-Ember Rule", "body": "Inside a headline, exactly one word takes ember — the verb or the payoff, never a connector.", "section": "typography" },
+      { "name": "The Arabic-Is-Native Rule", "body": "Arabic runs at Cairo's natural width, tracking 0, no uppercase, with direction flipped — except the fixed-composition hero, which stays LTR.", "section": "typography" },
+      { "name": "The Glass-Is-Earned Rule", "body": "Backdrop-blur and the glass shadow are reserved for controls floating over photography. Forbidden as decoration on flat sections.", "section": "elevation" },
+      { "name": "The Flat-Grid Rule", "body": "Card groups are separated by gap-px over a hairline background, not by shadows. The dividing line is the elevation.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the hero headline the single largest type on the page — display scale, never smaller than the section H2s beneath it.",
+      "Do use the .eyebrow (Space Mono, 0.2em tracking, uppercase) for labels on Latin surfaces; trust it to auto-untrack in Arabic.",
+      "Do ration ember to ≤10% of a surface.",
+      "Do commit every surface to paper or midnight; carry warmth through type and accent, not the background.",
+      "Do cap body and lead copy at 65–75ch and keep body ≥16px.",
+      "Do add prefers-reduced-motion alternatives to every entrance, the hero spring, and Reveal.",
+      "Do reference the --accent token (#ff4d00), never a hardcoded hex."
+    ],
+    "donts": [
+      "Don't ship the saturated creative-studio template — no oversized centered serif hero, no logo marquee, no identical project grid, no 'multidisciplinary studio' voice.",
+      "Don't ship the generic SaaS look — no gradient-blob hero, no three identical feature cards, no Inter/Roboto, no purple-to-blue gradient, no hero-metric template.",
+      "Don't drift to cheap-freelancer or corporate-sterile registers.",
+      "Don't overdesign; effects must earn their place.",
+      "Don't use gradient text or side-stripe borders.",
+      "Don't let a second ember element compete in the same glance, and don't let UI out-scale the display heading.",
+      "Don't lighten --muted-foreground past #6b6b6b on paper, or let midnight-muted placeholders drop below 4.5:1.",
+      "Don't hardcode #FF4500; it's drift from the #ff4d00 token."
+    ]
+  }
+}

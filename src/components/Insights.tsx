@@ -1,91 +1,95 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
+import {
+  TestimonialCard,
+  type CardPosition,
+} from "@/components/ui/testimonial-cards";
 
 export default function Insights() {
   const t = useTranslations("Insights");
-  const articles = t.raw("articles") as Array<{
+  const services = t.raw("services") as Array<{
     tag: string;
     title: string;
     excerpt: string;
-    date: string;
-    readTime: string;
+    meta: string;
+    outcome: string;
+    image: string;
   }>;
+  const [positions, setPositions] = useState<CardPosition[]>([
+    "front",
+    "middle",
+    "back",
+  ]);
+
+  const handleShuffle = () => {
+    setPositions((current) => {
+      const next = [...current];
+      const last = next.pop();
+      if (last) next.unshift(last);
+      return next;
+    });
+  };
 
   return (
     <section
       id="insights"
-      className="py-28 px-6 md:px-10 border-t border-border bg-background"
+      className="overflow-hidden border-t border-slate-800 bg-slate-900 px-6 py-28 text-slate-50 md:px-10"
     >
       <div className="max-w-[1400px] mx-auto">
-        {/* Heading row */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
+        <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
           <div>
-            {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-6">
               <span className="inline-block h-0.5 w-6 bg-accent" />
-              <span className="eyebrow">{t("sectionLabel")}</span>
+              <span className="eyebrow text-slate-400">{t("sectionLabel")}</span>
             </div>
 
-            <h2 className="font-display font-black uppercase tracking-tight leading-[0.95] text-5xl md:text-7xl text-foreground">
+            <h2 className="font-display font-black uppercase text-section text-balance text-slate-50">
               {t("heading1")}{" "}
               <span className="text-accent">{t("headingAccent")}</span>
               {t("heading2") ? ` ${t("heading2")}` : ""}
             </h2>
+
+            <p className="mt-6 max-w-xl text-lead text-slate-300">
+              {t("intro")}
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-5">
+              <a
+                href="#contact"
+                className="font-display font-bold uppercase text-sm tracking-wider text-slate-300 hover:text-white flex items-center gap-2 transition-colors shrink-0"
+              >
+                {t("cta")} ↗
+              </a>
+              <button
+                type="button"
+                onClick={handleShuffle}
+                className="rounded-full border border-slate-700 px-4 py-2 font-display text-xs font-bold uppercase tracking-wider text-slate-300 transition-colors hover:border-accent hover:text-white"
+              >
+                {t("shuffle")}
+              </button>
+            </div>
           </div>
 
-          {/* View all button */}
-          <a
-            href="#"
-            className="font-display font-bold uppercase text-sm tracking-wider text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors shrink-0"
-          >
-            {t("viewAll")} ↗
-          </a>
-        </div>
-
-        {/* Articles grid */}
-        <div className="grid md:grid-cols-3 gap-8 mt-14">
-          {articles.map((article, index) => (
-            <Reveal key={index} delay={index * 0.1}>
-              <a
-                href="#"
-                className="group flex flex-col h-full bg-card rounded-none border border-border p-7 hover:border-accent transition-colors duration-300"
-              >
-                {/* Tag */}
-                <div>
-                  <span className="text-xs px-3 py-1 rounded-full border border-border text-muted-foreground">
-                    {article.tag}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3 className="font-display font-bold uppercase text-2xl text-foreground leading-tight mt-5 group-hover:text-accent transition-colors duration-300">
-                  {article.title}
-                </h3>
-
-                {/* Excerpt */}
-                <p className="text-muted-foreground leading-relaxed mt-3 text-sm grow">
-                  {article.excerpt}
-                </p>
-
-                {/* Footer meta */}
-                <div className="flex items-center justify-between mt-6 pt-4 border-t border-border">
-                  <div className="flex items-center gap-4">
-                    <span className="eyebrow text-muted-foreground">
-                      {article.date}
-                    </span>
-                    <span className="eyebrow text-muted-foreground">
-                      {article.readTime}
-                    </span>
-                  </div>
-                  <span className="font-display font-bold uppercase text-xs tracking-wider text-muted-foreground group-hover:text-accent transition-colors duration-300">
-                    {t("readMore")} ↗
-                  </span>
-                </div>
-              </a>
-            </Reveal>
-          ))}
+          <Reveal className="grid min-h-[520px] place-content-center py-8">
+            <div className="relative -ml-[100px] h-[450px] w-[350px] md:-ml-[175px]">
+              {services.map((service, index) => (
+                <TestimonialCard
+                  key={service.title}
+                  id={index + 1}
+                  testimonial={service.excerpt}
+                  author={service.title}
+                  label={service.tag}
+                  meta={`${service.meta} / ${service.outcome}`}
+                  image={service.image}
+                  handleShuffle={handleShuffle}
+                  position={positions[index]}
+                />
+              ))}
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

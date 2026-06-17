@@ -23,9 +23,11 @@
 # misc
 .DS_Store
 *.pem
+public/assets/Untitled
 
 # local agent / AI-tool skill mirrors (not part of the project)
 /.agent
+/.agents
 /.claude
 /.codebuddy
 /.codex

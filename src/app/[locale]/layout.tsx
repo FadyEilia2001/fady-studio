@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, DM_Sans, Space_Mono, Cairo } from "next/font/google";
+import { Barlow_Condensed, Schibsted_Grotesk, Martian_Mono, Cairo } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -13,17 +13,20 @@ const barlow = Barlow_Condensed({
   weight: ["500", "600", "700", "900"],
 });
 
-// Body font.
-const dmSans = DM_Sans({
+// Body font — Schibsted Grotesk: a characterful humanist grotesque. Warm and
+// readable at body sizes, with enough personality to keep the page off the
+// generic-sans default. Variable weight axis (loaded whole).
+const schibsted = Schibsted_Grotesk({
   variable: "--font-body",
   subsets: ["latin"],
 });
 
-// Mono font — used for eyebrow labels and metadata.
-const spaceMono = Space_Mono({
+// Mono font — Martian Mono drives the eyebrow labels and metadata: a wide,
+// engineered monospace that reads as "built", not "developer costume".
+const martianMono = Martian_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500"],
 });
 
 // Arabic-capable font, applied for every role when the locale is Arabic.
@@ -62,7 +65,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html
       lang={locale}
       dir={dir}
-      className={`${barlow.variable} ${dmSans.variable} ${spaceMono.variable} ${cairo.variable} h-full antialiased`}
+      className={`${barlow.variable} ${schibsted.variable} ${martianMono.variable} ${cairo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>{children}</NextIntlClientProvider>

@@ -3,13 +3,27 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import Reveal from "@/components/Reveal";
+import Lightbox, { type LightboxItem } from "@/components/Lightbox";
 import { projects } from "@/data/projects";
+
+const PAGE_SIZE = 6;
 
 export default function Portfolio() {
   const t = useTranslations("Work");
-  const [active, setActive] = useState(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [page, setPage] = useState(0);
+
+  const items: LightboxItem[] = projects.map((p) => ({
+    slug: p.slug,
+    imageUrl: p.imageUrl,
+    title: t(`projects.${p.slug}.title`),
+    status: p.status,
+  }));
+
+  const pageCount = Math.ceil(projects.length / PAGE_SIZE);
+  const start = page * PAGE_SIZE;
+  const visible = projects.slice(start, start + PAGE_SIZE);
 
   return (
     <section
@@ -23,119 +37,123 @@ export default function Portfolio() {
           <span className="eyebrow">{t("sectionLabel")}</span>
         </Reveal>
 
-        {/* Heading row */}
-        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <Reveal delay={0.1}>
-            <h2 className="font-display text-5xl font-black uppercase leading-[0.95] tracking-tight text-foreground md:text-7xl">
-              {t("heading1")}{" "}
-              <span className="text-accent">{t("headingAccent")}</span>{" "}
-              {t("heading2")}
-            </h2>
-          </Reveal>
-          <Reveal delay={0.25}>
-            <Link
-              href="/work"
-              className="flex shrink-0 items-center gap-2 font-display text-sm font-bold uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {t("viewAll")} <span>↗</span>
-            </Link>
-          </Reveal>
-        </div>
+        {/* Heading */}
+        <Reveal delay={0.1} className="mb-12 max-w-3xl">
+          <h2 className="font-display text-section font-black uppercase text-balance text-foreground">
+            {t("heading1")}{" "}
+            <span className="text-accent">{t("headingAccent")}</span>{" "}
+            {t("heading2")}
+          </h2>
+        </Reveal>
 
-        {/* Accordion gallery */}
-        <Reveal delay={0.15}>
-          <div className="flex h-auto flex-col gap-2 md:h-[560px] md:flex-row">
-            {projects.map((project, i) => {
-              const isActive = active === i;
-              return (
-                <Link
-                  key={project.slug}
-                  href={`/work/${project.slug}`}
-                  onMouseEnter={() => setActive(i)}
-                  onFocus={() => setActive(i)}
-                  style={{ flexGrow: isActive ? 5 : 1 }}
-                  className="group relative h-72 overflow-hidden rounded-lg transition-[flex-grow] duration-500 ease-out md:h-full"
+        {/* Gallery grid — up to 6 tiles per page; each opens the lightbox */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {visible.map((project, localIndex) => {
+            const index = start + localIndex;
+            return (
+              <Reveal key={project.slug} delay={(localIndex % 3) * 0.08}>
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(index)}
+                  aria-label={`${items[index].title} — ${t("openProject")}`}
+                  className="group relative block aspect-[3/2] w-full overflow-hidden rounded-lg bg-card"
                 >
-                  {/* Image */}
                   <Image
                     src={project.imageUrl}
-                    alt={t(`projects.${project.slug}.title`)}
+                    alt=""
                     fill
-                    sizes="(max-width: 768px) 100vw, 60vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  {/* Color + dark overlay */}
-                  <div
-                    className="absolute inset-0 transition-opacity duration-500"
-                    style={{
-                      background: `linear-gradient(to top, rgba(10,15,30,0.92) 0%, rgba(10,15,30,0.45) 45%, rgba(10,15,30,0.15) 100%)`,
-                    }}
-                  />
-                  <div
-                    className="absolute inset-0 mix-blend-multiply transition-opacity duration-500"
-                    style={{
-                      background: project.color,
-                      opacity: isActive ? 0.15 : 0.35,
-                    }}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                   />
 
-                  {/* Year — top corner */}
-                  <span className="absolute top-5 left-5 font-mono text-xs tracking-widest text-white/70">
-                    {project.year}
-                  </span>
+                  {/* Bottom-only scrim — keeps the work bright and visible while
+                      the title/category stay legible. No full-image tint. */}
+                  <div
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-dark/85 to-transparent"
+                    aria-hidden="true"
+                  />
 
-                  {/* Content — bottom */}
-                  <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-6 md:p-8">
+                  {/* Concept badge */}
+                  {project.status === "concept" && (
+                    <span className="absolute right-4 top-4 rounded-full border border-white/30 bg-dark/40 px-2.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-widest text-white backdrop-blur-sm">
+                      {t("conceptTag")}
+                    </span>
+                  )}
+
+                  {/* Title + category */}
+                  <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-1 p-5 text-start">
                     <span
                       className="font-mono text-[0.65rem] uppercase tracking-[0.2em]"
                       style={{ color: project.color }}
                     >
                       {t(`projects.${project.slug}.category`)}
                     </span>
-                    <h3 className="font-display text-2xl font-bold uppercase leading-none text-white md:text-3xl">
-                      {t(`projects.${project.slug}.title`)}
-                    </h3>
-
-                    {/* Details revealed when active */}
-                    <div
-                      className="grid transition-all duration-500"
-                      style={{
-                        gridTemplateRows: isActive ? "1fr" : "0fr",
-                        opacity: isActive ? 1 : 0,
-                      }}
-                    >
-                      <div className="overflow-hidden">
-                        <p className="max-w-md pt-2 text-sm leading-relaxed text-white/80">
-                          {t(`projects.${project.slug}.description`)}
-                        </p>
-                        <div className="mt-4 flex items-center gap-4">
-                          <span className="font-display text-lg font-bold text-white">
-                            {t(`projects.${project.slug}.metric`)}
-                          </span>
-                          <span className="font-mono text-[0.7rem] uppercase tracking-widest text-white/70">
-                            {t("caseStudy")} ↗
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                    <span className="font-display text-card-title font-bold uppercase leading-none text-white">
+                      {items[index].title}
+                    </span>
                   </div>
-                </Link>
-              );
-            })}
-          </div>
-        </Reveal>
+                </button>
+              </Reveal>
+            );
+          })}
+        </div>
 
-        {/* Count strip */}
-        <Reveal
-          delay={0.2}
-          className="mt-6 flex items-center justify-between border-t border-border pt-4"
-        >
-          <p className="eyebrow opacity-50">{t("hoverHint")}</p>
-          <p className="eyebrow opacity-50">
-            {t("projectsCount", { count: projects.length })}
-          </p>
-        </Reveal>
+        {/* Pagination — keeps the homepage to 6 projects per page */}
+        {pageCount > 1 && (
+          <div className="mt-12 flex items-center justify-center gap-5">
+            <button
+              type="button"
+              onClick={() => setPage((p) => Math.max(0, p - 1))}
+              disabled={page === 0}
+              aria-label={t("prevPage")}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-accent hover:text-accent disabled:pointer-events-none disabled:opacity-35"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+
+            <div className="flex items-center gap-3">
+              {Array.from({ length: pageCount }).map((_, p) => (
+                <button
+                  key={p}
+                  type="button"
+                  onClick={() => setPage(p)}
+                  aria-label={`${t("page")} ${p + 1}`}
+                  aria-current={p === page}
+                  className={`font-mono text-sm tracking-widest transition-colors ${
+                    p === page
+                      ? "text-accent"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {String(p + 1).padStart(2, "0")}
+                </button>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
+              disabled={page === pageCount - 1}
+              aria-label={t("nextPage")}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-accent hover:text-accent disabled:pointer-events-none disabled:opacity-35"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
+
+      <Lightbox
+        items={items}
+        index={openIndex}
+        onClose={() => setOpenIndex(null)}
+        onIndexChange={setOpenIndex}
+        labels={{ close: t("close"), prev: t("prev"), next: t("next") }}
+      />
     </section>
   );
 }

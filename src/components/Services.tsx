@@ -27,12 +27,12 @@ export default function Services() {
 
           {/* Heading + Intro row */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-            <h2 className="font-display font-black uppercase tracking-tight leading-[0.95] text-5xl md:text-7xl text-foreground max-w-4xl">
+            <h2 className="font-display font-black uppercase text-section text-balance text-foreground max-w-4xl">
               {t("heading1")}{" "}
               <span className="text-accent">{t("headingAccent")}</span>{" "}
               {t("heading2")}
             </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-md md:pb-2">
+            <p className="text-lead text-pretty text-muted-foreground max-w-md md:pb-2">
               {t("intro")}
             </p>
           </div>
@@ -55,7 +55,7 @@ export default function Services() {
                 </span>
 
                 {/* Title */}
-                <h3 className="font-display font-bold uppercase text-2xl md:text-3xl text-foreground mb-4 group-hover:text-accent transition-colors duration-200 leading-tight">
+                <h3 className="font-display font-bold uppercase text-card-title text-foreground mb-4 group-hover:text-accent transition-colors duration-200">
                   {item.title}
                 </h3>
 

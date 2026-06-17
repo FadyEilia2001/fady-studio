@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Col 2 — Nav */}
           <div>
-            <p className="text-dark-muted text-xs tracking-[0.2em] uppercase mb-5">
+            <p className="text-dark-muted font-mono text-eyebrow uppercase mb-5">
               {t("navLabel")}
             </p>
             <ul className="space-y-0">
@@ -55,7 +55,7 @@ export default function Footer() {
 
           {/* Col 3 — Socials */}
           <div>
-            <p className="text-dark-muted text-xs tracking-[0.2em] uppercase mb-5">
+            <p className="text-dark-muted font-mono text-eyebrow uppercase mb-5">
               {t("socialLabel")}
             </p>
             <ul className="space-y-0">

@@ -17,7 +17,7 @@ export default function TrustedBy() {
         <div className="flex flex-wrap gap-8 md:gap-12">
           {logos.map((name, i) => (
             <Reveal key={name} delay={0.05 * (i + 1)}>
-              <span className="font-display font-semibold text-xl md:text-2xl text-muted-foreground/70 hover:text-foreground transition-colors duration-300 cursor-default select-none">
+              <span className="font-display font-semibold text-xl md:text-2xl text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-default select-none">
                 {name}
               </span>
             </Reveal>

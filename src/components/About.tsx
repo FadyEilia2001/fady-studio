@@ -25,12 +25,11 @@ export default function About() {
             />
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-card border-b-4 border-accent z-10">
               <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80"
-                alt="Fady Eilia"
+                src="/assets/bottom.webp"
+                alt="Fady Eilia — half portrait, half design-and-code system"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover"
-                priority
               />
             </div>
           </Reveal>
@@ -47,7 +46,7 @@ export default function About() {
 
             {/* Heading */}
             <Reveal delay={0.2}>
-              <h2 className="font-display font-black uppercase tracking-tight leading-[0.95] text-4xl md:text-6xl text-foreground mb-8">
+              <h2 className="font-display font-black uppercase text-section text-balance text-foreground mb-8">
                 {t("heading1")}{" "}
                 <span className="text-accent">{t("headingAccent")}</span>
               </h2>
@@ -55,13 +54,13 @@ export default function About() {
 
             {/* Body paragraphs */}
             <Reveal delay={0.3}>
-              <p className="text-muted-foreground leading-relaxed text-lg mb-6">
+              <p className="text-lead text-pretty text-muted-foreground max-w-[58ch] mb-6">
                 {t("body1")}
               </p>
             </Reveal>
 
             <Reveal delay={0.4}>
-              <p className="text-muted-foreground leading-relaxed text-lg">
+              <p className="text-lead text-pretty text-muted-foreground max-w-[58ch]">
                 {t("body2")}
               </p>
             </Reveal>
@@ -73,7 +72,7 @@ export default function About() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-12 border-t border-border">
             {stats.map((stat) => (
               <div key={stat.label}>
-                <span className="font-display font-black text-4xl md:text-5xl text-foreground">
+                <span className="font-display font-black text-stat text-foreground">
                   {stat.value}
                 </span>
                 <span className="eyebrow mt-2 block">{stat.label}</span>

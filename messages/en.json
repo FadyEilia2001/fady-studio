@@ -2,17 +2,21 @@
   "Nav": {
     "work": "WORK",
     "systems": "SYSTEMS",
-    "insights": "INSIGHTS",
+    "insights": "SERVICES",
     "about": "ABOUT",
     "contact": "CONTACT",
-    "cta": "LET'S BUILD"
+    "cta": "LET'S BUILD",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "Hero": {
-    "tagline": "APPS. AUTOMATION. RESULTS.",
-    "headlineLead": "I BUILD THINGS THAT MAKE YOUR BUSINESS",
-    "headlineAccent": "WORK HARDER.",
-    "subtitle": "From phone apps to website automation — I help you reach more customers and build a reputation that sticks.",
-    "cta": "SEE MY WORK"
+    "tagline": "WEBSITES. IDEAS. GROWTH.",
+    "headlineLead": "I HELP YOUR BUSINESS SHOW UP",
+    "headlineAccent": "BETTER ONLINE.",
+    "subtitle": "I build websites, shape ideas, and help local businesses look clear, trusted, and easy to contact.",
+    "cta": "TELL ME WHAT YOU NEED",
+    "shortHeadlineLead": "Better",
+    "shortHeadlineAccent": "Online"
   },
   "LanguageToggle": {
     "label": "Switch language",
@@ -20,38 +24,61 @@
     "ar": "ع"
   },
   "TrustedBy": {
-    "label": "Trusted by teams using",
-    "logos": ["Webflow", "Framer", "Relume", "Figma", "Supabase"]
+    "label": "Built with tools like",
+    "logos": [
+      "Webflow",
+      "Framer",
+      "Relume",
+      "Figma",
+      "Supabase"
+    ]
   },
   "Services": {
     "sectionLabel": "WHAT I DO",
-    "heading1": "Systems that",
-    "headingAccent": "scale",
-    "heading2": "without the chaos.",
-    "intro": "Three ways I help businesses move faster and look the part — built to fit how you actually work.",
+    "heading1": "Clear online",
+    "headingAccent": "presence",
+    "heading2": "for real businesses.",
+    "intro": "I help you explain what you do, look professional, and make it easier for people to choose you.",
     "items": [
       {
         "number": "01",
-        "title": "Custom Apps & Websites",
-        "description": "Phone apps and websites built for your customers, not just for show. Fast, reliable, and made to convert.",
-        "tags": ["iOS & Android", "Web Apps", "E-commerce"]
+        "title": "Websites That Feel Like You",
+        "description": "A clean, modern website that tells people who you are, what you offer, and how to reach you.",
+        "tags": [
+          "Websites",
+          "Mobile-friendly",
+          "E-commerce"
+        ]
       },
       {
         "number": "02",
-        "title": "Automation Tools",
-        "description": "Stop doing manually what a system can handle. I connect your tools so the busywork runs itself.",
-        "tags": ["Workflows", "Integrations", "Dashboards"]
+        "title": "A Thought Partner",
+        "description": "Not sure what to say or what your site needs? I help you sort the idea, the offer, and the next move.",
+        "tags": [
+          "Strategy",
+          "Copy",
+          "Planning"
+        ]
       },
       {
         "number": "03",
-        "title": "Stronger Reputation",
-        "description": "Look and feel like the business you're becoming. Brand, design, and experience that earn trust on sight.",
-        "tags": ["Branding", "UX/UI", "Content"]
+        "title": "A Stronger First Impression",
+        "description": "Your online presence should match the quality of your work. I help make your business feel trusted from the first look.",
+        "tags": [
+          "Brand",
+          "Design",
+          "Content"
+        ]
       }
     ]
   },
   "Work": {
     "sectionLabel": "SELECTED WORK",
+    "openProject": "View project",
+    "conceptTag": "Concept",
+    "close": "Close",
+    "prev": "Previous project",
+    "next": "Next project",
     "heading1": "Real projects.",
     "headingAccent": "Real",
     "heading2": "results.",
@@ -66,130 +93,152 @@
     "theResult": "The result",
     "nextProject": "Next project",
     "indexTitle": "All Work",
-    "indexSubtitle": "A selection of apps, automation systems, and brands I've shipped.",
+    "indexSubtitle": "A selection of websites, tools, and brand work I've shipped.",
     "projects": {
-      "bloom-commerce": {
-        "title": "Bloom Commerce",
-        "category": "E-commerce App",
-        "metric": "+127% revenue",
-        "description": "A headless storefront and mobile app that turned a local shop into a national brand.",
-        "challenge": "A growing retailer was losing sales to a slow, clunky checkout and had no mobile presence.",
-        "build": "A headless e-commerce platform with a native app, one-tap checkout, and a self-serve content system.",
-        "result": "Revenue grew 127% in six months and mobile became the top sales channel."
+      "bridal": {
+        "title": "Bridal Boutique",
+        "category": "Bridal & Events"
       },
-      "atlas-logistics": {
-        "title": "Atlas Logistics",
-        "category": "Automation Platform",
-        "metric": "40 hrs saved / week",
-        "description": "An operations hub that automated dispatch, tracking, and invoicing end to end.",
-        "challenge": "The team ran everything on spreadsheets and phone calls, losing hours to manual coordination.",
-        "build": "A custom operations platform that automates dispatch, live tracking, and invoicing in one flow.",
-        "result": "The team reclaimed 40 hours a week and cut billing errors to near zero."
+      "grocery-store": {
+        "title": "Grocery Store",
+        "category": "E-commerce"
       },
-      "nexus-health": {
-        "title": "Nexus Health",
-        "category": "Patient Portal",
-        "metric": "3x bookings",
-        "description": "A patient portal that made booking, reminders, and records effortless.",
-        "challenge": "Patients struggled to book appointments and no-shows were eating into the clinic's revenue.",
-        "build": "A friendly patient portal with online booking, automated reminders, and secure records.",
-        "result": "Bookings tripled and no-shows dropped by half within the first quarter."
+      "handyman-services": {
+        "title": "Handyman Services",
+        "category": "Service Business"
       },
-      "verde-studio": {
-        "title": "Verde Studio",
-        "category": "Brand & Website",
-        "metric": "2.5x leads",
-        "description": "A full rebrand and website that repositioned a studio as a premium player.",
-        "challenge": "A talented design studio looked dated and was attracting the wrong kind of clients.",
-        "build": "A complete rebrand and a fast, editorial website that shows the work front and center.",
-        "result": "Qualified leads grew 2.5x and average project value doubled."
+      "home-meal": {
+        "title": "Home Meal",
+        "category": "Food & Delivery"
       },
-      "pulse-fitness": {
-        "title": "Pulse Fitness",
-        "category": "Mobile App",
-        "metric": "50k downloads",
-        "description": "A coaching app with workout tracking, plans, and a community feed.",
-        "challenge": "A coach wanted to scale beyond in-person sessions without losing the personal touch.",
-        "build": "A mobile app with custom plans, progress tracking, and a motivating community feed.",
-        "result": "The app passed 50,000 downloads and built a recurring membership base."
+      "hookah-lounge": {
+        "title": "Hookah Lounge",
+        "category": "Hospitality"
       },
-      "meridian-finance": {
-        "title": "Meridian Finance",
-        "category": "Analytics Dashboard",
-        "metric": "-60% manual work",
-        "description": "A reporting dashboard that replaced a week of spreadsheets with live data.",
-        "challenge": "Leadership waited a week each month for reports stitched together by hand.",
-        "build": "A live analytics dashboard that pulls every source into one real-time view.",
-        "result": "Manual reporting dropped 60% and decisions now happen on current data."
+      "immigration-services": {
+        "title": "Immigration Services",
+        "category": "Professional Services"
+      },
+      "live-arabic": {
+        "title": "Live Arabic",
+        "category": "Education"
+      },
+      "real-estate-agent": {
+        "title": "Real Estate Agent",
+        "category": "Real Estate"
+      },
+      "restaurant-app": {
+        "title": "Restaurant App",
+        "category": "Mobile App"
+      },
+      "wedding-planner": {
+        "title": "Wedding Planner",
+        "category": "Events"
       }
-    }
+    },
+    "prevPage": "Previous page",
+    "nextPage": "Next page",
+    "page": "Page"
   },
   "Insights": {
-    "sectionLabel": "INSIGHTS",
-    "heading1": "Ideas worth",
-    "headingAccent": "sharing.",
+    "sectionLabel": "SERVICES OFFERED",
+    "heading1": "Build the thing",
+    "headingAccent": "people meet first.",
     "heading2": "",
-    "viewAll": "READ THE BLOG",
-    "readMore": "Read",
-    "articles": [
+    "intro": "Drag the front card left or shuffle through the three core offers: a marketing site, a mobile application, and brand design.",
+    "cta": "START A PROJECT",
+    "cardAction": "Ask",
+    "shuffle": "Shuffle cards",
+    "services": [
       {
-        "tag": "Automation",
-        "title": "Why automation beats hustle every time",
-        "excerpt": "Working harder has a ceiling. Systems don't. Here's how to find the tasks worth automating first.",
-        "date": "Jun 2026",
-        "readTime": "5 min read"
+        "tag": "Marketing Site",
+        "title": "A website that sells the offer clearly",
+        "excerpt": "A sharp, mobile-friendly site that explains what you do, proves you are credible, and makes the next step obvious.",
+        "meta": "Website",
+        "outcome": "Clear leads",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
       },
       {
-        "tag": "Design",
-        "title": "Design that converts, not just impresses",
-        "excerpt": "Pretty doesn't pay the bills. A look at the design decisions that actually move the numbers.",
-        "date": "May 2026",
-        "readTime": "6 min read"
+        "tag": "Mobile App",
+        "title": "A useful app your customers come back to",
+        "excerpt": "A focused mobile product for booking, ordering, tracking, learning, or keeping your service close in your customer's hand.",
+        "meta": "iOS / Android",
+        "outcome": "Repeat use",
+        "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&q=80"
       },
       {
-        "tag": "Strategy",
-        "title": "App or website: what your business actually needs",
-        "excerpt": "The honest answer is 'it depends' — but on what? A simple framework to decide with confidence.",
-        "date": "Apr 2026",
-        "readTime": "4 min read"
+        "tag": "Brand Design",
+        "title": "A first impression that feels intentional",
+        "excerpt": "Identity, visuals, and practical brand assets that make your business look like the quality of the work behind it.",
+        "meta": "Identity",
+        "outcome": "Trust faster",
+        "image": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80"
       }
     ]
   },
   "About": {
     "sectionLabel": "ABOUT",
-    "heading1": "I turn complex ideas into things people",
-    "headingAccent": "actually use.",
-    "body1": "I'm Fady Eilia — a builder who lives where strategy, design, and engineering meet. For the last several years I've helped businesses ship apps, automate the work that slows them down, and build brands that earn trust.",
-    "body2": "I care about outcomes, not buzzwords. Whether it's a phone app, an internal tool, or a full rebrand, the goal is the same: make your business work harder so you don't have to.",
+    "heading1": "I help good businesses look",
+    "headingAccent": "clear online.",
+    "body1": "I'm Fady Eilia. I build websites and help business owners shape the message behind them: what you do, why it matters, and why someone should trust you.",
+    "body2": "I work best with owners who have a real business and need a clearer way to show it online. We can build the site, clean up the idea, or map the next step together.",
     "stats": [
-      { "value": "8+", "label": "Years building" },
-      { "value": "40+", "label": "Projects shipped" },
-      { "value": "12", "label": "Industries served" },
-      { "value": "100%", "label": "Founder-led" }
+      {
+        "value": "8+",
+        "label": "Years building"
+      },
+      {
+        "value": "40+",
+        "label": "Projects launched"
+      },
+      {
+        "value": "12",
+        "label": "Types of business"
+      },
+      {
+        "value": "100%",
+        "label": "Founder-led"
+      }
     ]
   },
   "Contact": {
     "sectionLabel": "CONTACT",
-    "heading1": "Let's build something",
-    "headingAccent": "worth talking about.",
-    "subtitle": "Tell me what you're working on. I'll reply within a day with honest thoughts on how to make it real.",
+    "heading1": "Tell me what",
+    "headingAccent": "you need.",
+    "subtitle": "Send me the simple version. I'll reply with honest thoughts on what makes sense next.",
     "emailLabel": "Email me",
-    "email": "hello@fadyeilia.com",
+    "email": "fadyeilia0613@gmail.com",
+    "whatsappLabel": "WhatsApp",
+    "whatsappCta": "Send me a message",
+    "whatsappHref": "https://wa.me/16159445053",
     "cta": "START A PROJECT",
-    "formName": "Your name",
-    "formEmail": "Your email",
-    "formMessage": "What are you building?",
-    "formSubmit": "SEND MESSAGE"
+    "formTitle": "Contact Form",
+    "formLoading": "Loading form",
+    "tallySrc": "https://tally.so/embed/MeGxVg?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1",
+    "bookingCta": "Book 15 minutes",
+    "bookingHref": "https://cal.com/fady-eilia-yc2jcd/15min"
   },
   "Footer": {
-    "tagline": "Apps, automation, and brands that make your business work harder.",
+    "tagline": "Websites, strategy, and online presence for businesses that want to be taken seriously.",
     "navLabel": "Navigate",
     "socialLabel": "Elsewhere",
     "socials": [
-      { "label": "LinkedIn", "href": "https://linkedin.com" },
-      { "label": "Instagram", "href": "https://instagram.com" },
-      { "label": "GitHub", "href": "https://github.com" },
-      { "label": "X / Twitter", "href": "https://x.com" }
+      {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com"
+      },
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com"
+      },
+      {
+        "label": "X / Twitter",
+        "href": "https://x.com"
+      }
     ],
     "rights": "All rights reserved.",
     "builtWith": "Designed & built by Fady Eilia",

@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
+import { localeDirection, type Locale } from "@/i18n/routing";
 
 const SPRING = { type: "spring", stiffness: 80, damping: 18 } as const;
 
@@ -15,8 +16,17 @@ const textVariants: Variants = {
   }),
 };
 
+// Reduced motion: copy is present with no rise/fade.
+const staticVariants: Variants = {
+  hidden: { opacity: 1, y: 0 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function Hero() {
   const t = useTranslations("Hero");
+  const dir = localeDirection[useLocale() as Locale];
+  const reduce = useReducedMotion();
+  const tv = reduce ? staticVariants : textVariants;
   return (
     // Keep the hero visually LTR in both languages: the two image halves are a
     // fixed composition that must join at the center seam. Flipping the panels
@@ -25,7 +35,7 @@ export default function Hero() {
     <section dir="ltr" className="relative flex h-screen w-full overflow-hidden">
       {/* LEFT PANEL */}
       <motion.div
-        initial={{ x: "-100%" }}
+        initial={reduce ? false : { x: "-100%" }}
         animate={{ x: 0 }}
         transition={SPRING}
         className="relative flex h-full w-1/2 shrink-0 overflow-hidden bg-[#F0EFEA]"
@@ -40,31 +50,29 @@ export default function Hero() {
         />
 
         {/* Text overlay */}
-        <div className="absolute inset-y-0 left-0 z-10 flex w-[60%] flex-col justify-center px-12 pb-16 pt-24">
+        <div className="absolute inset-y-0 left-0 z-10 hidden w-[62%] flex-col justify-center px-10 pb-16 pt-24 sm:px-12 md:flex">
           {/* Tagline */}
           <motion.div
             custom={0.7}
             initial="hidden"
             animate="visible"
-            variants={textVariants}
+            variants={tv}
             className="mb-6"
           >
-            <p className="text-xs tracking-[0.3em] uppercase font-medium text-[#1A1A1A]">
-              {t("tagline")}
-            </p>
-            <div className="mt-2 h-[2px] w-8 bg-[#FF4500]" />
+            <p className="eyebrow">{t("tagline")}</p>
+            <div className="mt-3 h-[2px] w-10 bg-accent" />
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline — the loudest type on the page. */}
           <motion.h1
             custom={0.82}
             initial="hidden"
             animate="visible"
-            variants={textVariants}
-            className="mb-6 text-4xl font-black uppercase leading-[1.05] tracking-tight text-[#1A1A1A] xl:text-5xl"
+            variants={tv}
+            className="mb-7 max-w-[12ch] text-balance font-display text-hero font-black uppercase text-foreground"
           >
             {t("headlineLead")}{" "}
-            <span className="text-[#FF4500]">{t("headlineAccent")}</span>
+            <span className="text-accent">{t("headlineAccent")}</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -72,8 +80,8 @@ export default function Hero() {
             custom={0.94}
             initial="hidden"
             animate="visible"
-            variants={textVariants}
-            className="mb-10 max-w-xs text-sm leading-relaxed text-[#666666]"
+            variants={tv}
+            className="mb-10 max-w-[34ch] text-pretty text-body text-[#4d4d4d]"
           >
             {t("subtitle")}
           </motion.p>
@@ -83,11 +91,11 @@ export default function Hero() {
             custom={1.06}
             initial="hidden"
             animate="visible"
-            variants={textVariants}
+            variants={tv}
           >
             <a
-              href="#work"
-              className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-[#0A0F1E]/50 px-7 py-4 text-xs tracking-widest font-medium uppercase text-white backdrop-blur-md backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 hover:bg-[#FF4500]/40"
+              href="#contact"
+              className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-dark/50 px-7 py-4 text-xs tracking-widest font-medium uppercase text-white backdrop-blur-md backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 hover:bg-accent/40"
             >
               {t("cta")} <span className="text-base">↗</span>
             </a>
@@ -97,10 +105,10 @@ export default function Hero() {
 
       {/* RIGHT PANEL */}
       <motion.div
-        initial={{ x: "100%" }}
+        initial={reduce ? false : { x: "100%" }}
         animate={{ x: 0 }}
         transition={SPRING}
-        className="relative -ml-px flex h-full w-[calc(50%+1px)] shrink-0 overflow-hidden bg-[#0A0F1E]"
+        className="relative -ml-px flex h-full w-[calc(50%+1px)] shrink-0 overflow-hidden bg-dark"
       >
         <Image
           src="/assets/rightHeroImageCropped-upscaled-20260616-012529.webp"
@@ -111,6 +119,56 @@ export default function Hero() {
           className="object-cover object-left"
         />
       </motion.div>
+
+      {/* MOBILE HERO — full-bleed portrait (both halves) with the headline up top
+          and the CTA centered over the image. Hidden on md+, where the split
+          composition + desktop text overlay take over. */}
+      <div
+        dir={dir}
+        className="absolute inset-0 z-20 flex flex-col justify-end md:hidden"
+      >
+        {/* Slim top scrim keeps the white logo + hamburger legible */}
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/45 to-transparent"
+          aria-hidden="true"
+        />
+        {/* Bottom scrim so the headline + CTA read over the lower image */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-black/85 via-black/45 to-transparent"
+          aria-hidden="true"
+        />
+
+        {/* Headline + CTA grouped low, clear of the face */}
+        <div className="relative z-10 flex flex-col items-center px-6 pb-20 text-center">
+          <motion.div
+            custom={0.7}
+            initial="hidden"
+            animate="visible"
+            variants={tv}
+          >
+            <p className="eyebrow !text-white/85">{t("tagline")}</p>
+            <h1 className="mt-3 text-balance font-display text-[clamp(2.75rem,14vw,4.5rem)] font-black uppercase leading-[0.95] text-white">
+              {t("shortHeadlineLead")}{" "}
+              <span className="text-accent">{t("shortHeadlineAccent")}</span>
+            </h1>
+          </motion.div>
+
+          <motion.div
+            custom={0.95}
+            initial="hidden"
+            animate="visible"
+            variants={tv}
+            className="mt-8"
+          >
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-dark/50 px-7 py-4 text-xs font-medium uppercase tracking-widest text-white backdrop-blur-md backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 hover:bg-accent/40"
+            >
+              {t("cta")} <span className="text-base">↗</span>
+            </a>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
