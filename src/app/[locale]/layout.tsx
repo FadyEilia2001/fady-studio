@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Schibsted_Grotesk, Martian_Mono, Cairo } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -36,9 +36,27 @@ const cairo = Cairo({
   weight: ["400", "500", "700", "900"],
 });
 
+const faviconBase = "/assets/favicon";
+
 export const metadata: Metadata = {
   title: "Fady Eilia",
   description: "Apps, automation, and experiences that drive growth.",
+  icons: {
+    icon: [
+      { url: `${faviconBase}/favicon.ico`, sizes: "any" },
+      { url: `${faviconBase}/favicon-16x16.png`, sizes: "16x16", type: "image/png" },
+      { url: `${faviconBase}/favicon-32x32.png`, sizes: "32x32", type: "image/png" },
+    ],
+    apple: `${faviconBase}/apple-touch-icon.png`,
+  },
+  manifest: `${faviconBase}/site.webmanifest`,
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#faf9f6" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0f1e" },
+  ],
 };
 
 export function generateStaticParams() {
