@@ -74,7 +74,7 @@ export default function Insights() {
           </div>
 
           <Reveal className="grid min-h-[400px] place-content-center overflow-visible py-6 md:min-h-[520px] md:py-8">
-            <div className="relative mx-auto h-[380px] w-[min(100%,280px)] sm:w-[300px] md:-ml-[175px] md:mx-0 md:h-[450px] md:w-[350px]">
+            <div className="relative mx-auto h-[380px] w-[280px] sm:w-[300px] md:-ml-[175px] md:mx-0 md:h-[450px] md:w-[350px]">
               {services.map((service, index) => (
                 <TestimonialCard
                   key={service.title}

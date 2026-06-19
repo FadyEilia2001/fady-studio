@@ -88,7 +88,6 @@ export function TestimonialCard({
 
   return (
     <motion.div
-      layout
       style={{
         zIndex: position === "front" ? "2" : position === "middle" ? "1" : "0",
       }}
@@ -110,7 +109,7 @@ export function TestimonialCard({
       }}
       whileDrag={reduce ? undefined : { scale: 1.015, rotate: -2 }}
       transition={reduce ? { duration: 0 } : CARD_SPRING}
-      className={`absolute left-0 top-0 flex h-[380px] w-[min(100%,280px)] select-none flex-col overflow-hidden rounded-2xl border-2 border-slate-700 bg-slate-800/25 shadow-xl backdrop-blur-md sm:w-[300px] md:h-[450px] md:w-[350px] ${
+      className={`absolute inset-0 flex select-none flex-col overflow-hidden rounded-2xl border-2 border-slate-700 bg-slate-800/25 shadow-xl backdrop-blur-md ${
         isFront ? "cursor-grab active:cursor-grabbing" : ""
       }`}
       aria-label={`${label}: ${author}`}
