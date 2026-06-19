@@ -36,7 +36,7 @@ export default function Insights() {
   return (
     <section
       id="insights"
-      className="overflow-hidden border-t border-slate-800 bg-slate-900 px-6 py-28 text-slate-50 md:px-10"
+      className="overflow-x-clip border-t border-slate-800 bg-slate-900 px-6 py-28 text-slate-50 md:px-10"
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
@@ -73,8 +73,8 @@ export default function Insights() {
             </div>
           </div>
 
-          <Reveal className="grid min-h-[520px] place-content-center py-8">
-            <div className="relative -ml-[100px] h-[450px] w-[350px] md:-ml-[175px]">
+          <Reveal className="grid min-h-[400px] place-content-center overflow-visible py-6 md:min-h-[520px] md:py-8">
+            <div className="relative mx-auto h-[380px] w-[min(100%,280px)] sm:w-[300px] md:-ml-[175px] md:mx-0 md:h-[450px] md:w-[350px]">
               {services.map((service, index) => (
                 <TestimonialCard
                   key={service.title}
