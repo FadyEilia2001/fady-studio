@@ -162,9 +162,9 @@ export default function Hero() {
           >
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-dark/50 px-7 py-4 text-xs font-medium uppercase tracking-widest text-white backdrop-blur-md backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 hover:bg-accent/40"
+              className="inline-flex max-w-[calc(100vw-3rem)] flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-white/15 bg-dark/50 px-6 py-3.5 text-center text-[0.6875rem] font-medium uppercase leading-snug tracking-[0.14em] text-white backdrop-blur-md backdrop-saturate-150 shadow-[0_8px_32px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 hover:bg-accent/40"
             >
-              {t("cta")} <span className="text-base">↗</span>
+              {t("cta")} <span className="text-base leading-none">↗</span>
             </a>
           </motion.div>
         </div>
