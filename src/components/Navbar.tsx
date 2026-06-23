@@ -29,7 +29,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
 
   useEffect(() => {
     const onScroll = () =>
-      setScrolled(window.scrollY > window.innerHeight * 0.8);
+      setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
