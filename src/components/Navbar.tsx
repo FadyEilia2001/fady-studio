@@ -119,7 +119,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
               dark ? "text-white" : "text-white md:text-[#1A1A1A]"
             }`}
           >
-            FE<span className="text-accent">.</span>
+            FE
           </Link>
 
           <ul className="hidden items-center gap-8 md:flex">
