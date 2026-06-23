@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
 import Lightbox, { type LightboxItem } from "@/components/Lightbox";
-import { projects } from "@/data/projects";
+import { projects, featuredClients } from "@/data/projects";
 
 const PAGE_SIZE = 6;
 
@@ -41,12 +41,52 @@ export default function Portfolio() {
         <Reveal delay={0.1} className="mb-12 max-w-3xl">
           <h2 className="font-display text-section font-black uppercase text-balance text-foreground">
             {t("heading1")}{" "}
-            <span className="text-accent">{t("headingAccent")}</span>{" "}
-            {t("heading2")}
+            <span className="text-accent">{t("headingAccent")}</span>
+            {t("heading2") ? ` ${t("heading2")}` : ""}
           </h2>
         </Reveal>
 
-        {/* Gallery grid — up to 6 tiles per page; each opens the lightbox */}
+        {/* Tier 1 — named clients */}
+        <Reveal delay={0.15} className="mb-3">
+          <span className="eyebrow text-muted-foreground">{t("featuredLabel")}</span>
+        </Reveal>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 mb-16">
+          {featuredClients.map((client, i) => (
+            <Reveal key={client.slug} delay={i * 0.08}>
+              <a
+                href={client.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block aspect-[3/2] w-full overflow-hidden rounded-lg bg-card"
+              >
+                <Image
+                  src={client.imageUrl}
+                  alt={client.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                />
+                <div
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-dark/85 to-transparent"
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-1 p-5 text-start">
+                  <span className="font-display text-card-title font-bold uppercase leading-none text-white">
+                    {client.name}
+                  </span>
+                  <span className="font-mono text-[0.65rem] text-white/70 leading-snug">
+                    {client.description}
+                  </span>
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Tier 2 — anonymized work */}
+        <Reveal className="mb-6">
+          <span className="eyebrow text-muted-foreground">{t("anonymousLabel")}</span>
+        </Reveal>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((project, localIndex) => {
             const index = start + localIndex;
@@ -65,22 +105,15 @@ export default function Portfolio() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                   />
-
-                  {/* Bottom-only scrim — keeps the work bright and visible while
-                      the title/category stay legible. No full-image tint. */}
                   <div
                     className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-dark/85 to-transparent"
                     aria-hidden="true"
                   />
-
-                  {/* Concept badge */}
                   {project.status === "concept" && (
                     <span className="absolute right-4 top-4 rounded-full border border-white/30 bg-dark/40 px-2.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-widest text-white backdrop-blur-sm">
                       {t("conceptTag")}
                     </span>
                   )}
-
-                  {/* Title + category */}
                   <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-1 p-5 text-start">
                     <span
                       className="font-mono text-[0.65rem] uppercase tracking-[0.2em]"
@@ -98,7 +131,7 @@ export default function Portfolio() {
           })}
         </div>
 
-        {/* Pagination — keeps the homepage to 6 projects per page */}
+        {/* Pagination */}
         {pageCount > 1 && (
           <div className="mt-12 flex items-center justify-center gap-5">
             <button
@@ -112,7 +145,6 @@ export default function Portfolio() {
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
-
             <div className="flex items-center gap-3">
               {Array.from({ length: pageCount }).map((_, p) => (
                 <button
@@ -122,16 +154,13 @@ export default function Portfolio() {
                   aria-label={`${t("page")} ${p + 1}`}
                   aria-current={p === page}
                   className={`font-mono text-sm tracking-widest transition-colors ${
-                    p === page
-                      ? "text-accent"
-                      : "text-muted-foreground hover:text-foreground"
+                    p === page ? "text-accent" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {String(p + 1).padStart(2, "0")}
                 </button>
               ))}
             </div>
-
             <button
               type="button"
               onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}

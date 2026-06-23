@@ -10,13 +10,13 @@
     "closeMenu": "Close menu"
   },
   "Hero": {
-    "tagline": "WEBSITES. IDEAS. GROWTH.",
-    "headlineLead": "I HELP YOUR BUSINESS SHOW UP",
-    "headlineAccent": "BETTER ONLINE.",
-    "subtitle": "I build websites, shape ideas, and help local businesses look clear, trusted, and easy to contact.",
+    "tagline": "NASHVILLE. ARABIC. ONLINE.",
+    "headlineLead": "NASHVILLE'S ARAB BUSINESSES,",
+    "headlineAccent": "BUILT RIGHT, FROM HERE.",
+    "subtitle": "Websites, apps, and brand work made for Nashville's Arab business community — by someone who knows both worlds.",
     "cta": "TELL ME WHAT YOU NEED",
-    "shortHeadlineLead": "Better",
-    "shortHeadlineAccent": "Online"
+    "shortHeadlineLead": "NASHVILLE",
+    "shortHeadlineAccent": "BUILT RIGHT."
   },
   "LanguageToggle": {
     "label": "Switch language",
@@ -24,14 +24,7 @@
     "ar": "ع"
   },
   "TrustedBy": {
-    "label": "Built with tools like",
-    "logos": [
-      "Webflow",
-      "Framer",
-      "Relume",
-      "Figma",
-      "Supabase"
-    ]
+    "trust": "Trusted by Trinity Investee, CD Studio, and businesses across Nashville's Arab community."
   },
   "Services": {
     "sectionLabel": "WHAT I DO",
@@ -79,9 +72,11 @@
     "close": "Close",
     "prev": "Previous project",
     "next": "Next project",
-    "heading1": "Real projects.",
-    "headingAccent": "Real",
-    "heading2": "results.",
+    "heading1": "Selected",
+    "headingAccent": "Work.",
+    "heading2": "",
+    "featuredLabel": "Named clients",
+    "anonymousLabel": "Additional work — client names withheld by request",
     "viewAll": "VIEW ALL",
     "hoverHint": "Hover to explore each project",
     "projectsCount": "{count} Projects",

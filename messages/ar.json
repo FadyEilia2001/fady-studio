@@ -10,13 +10,13 @@
     "closeMenu": "اقفل القائمة"
   },
   "Hero": {
-    "tagline": "مواقع. أفكار. نمو.",
-    "headlineLead": "بساعد شغلك يبان",
-    "headlineAccent": "أحسن أونلاين.",
-    "subtitle": "بعمل مواقع، وبساعدك تظبط فكرتك ورسالتك، عشان الناس تفهمك وتثق فيك وتتواصل معاك بسهولة.",
+    "tagline": "ناشفيل. عربي. أونلاين.",
+    "headlineLead": "بيزنس العرب في ناشفيل،",
+    "headlineAccent": "اتبنى صح من هنا.",
+    "subtitle": "مواقع وتطبيقات وبراند لأصحاب البيزنس العرب في ناشفيل — من حد فاهم الدنيا بالاتنين.",
     "cta": "قولي محتاج إيه",
-    "shortHeadlineLead": "أحسن",
-    "shortHeadlineAccent": "أونلاين"
+    "shortHeadlineLead": "ناشفيل",
+    "shortHeadlineAccent": "اتبنى صح."
   },
   "LanguageToggle": {
     "label": "تغيير اللغة",
@@ -24,14 +24,7 @@
     "ar": "ع"
   },
   "TrustedBy": {
-    "label": "بشتغل بأدوات زي",
-    "logos": [
-      "Webflow",
-      "Framer",
-      "Relume",
-      "Figma",
-      "Supabase"
-    ]
+    "trust": "بثق فيه Trinity Investee وCD Studio وناس كتير من مجتمع العرب في ناشفيل."
   },
   "Services": {
     "sectionLabel": "بعمل إيه",
@@ -79,9 +72,11 @@
     "close": "إغلاق",
     "prev": "المشروع السابق",
     "next": "المشروع التالي",
-    "heading1": "مشاريع حقيقية.",
-    "headingAccent": "نتائج",
-    "heading2": "حقيقية.",
+    "heading1": "شغل",
+    "headingAccent": "مختار.",
+    "heading2": "",
+    "featuredLabel": "عملاء بالاسم",
+    "anonymousLabel": "شغل تاني — أسماء العملاء محجوبة بطلبهم",
     "viewAll": "عرض الكل",
     "hoverHint": "قرّب على كل مشروع",
     "projectsCount": "{count} مشاريع",
