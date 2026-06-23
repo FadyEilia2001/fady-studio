@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import LanguageToggle from "./LanguageToggle";
 
@@ -29,7 +30,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
 
   useEffect(() => {
     const onScroll = () =>
-      setScrolled(window.scrollY > window.innerHeight * 0.8);
+      setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -113,13 +114,16 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
           <Link
             href="/"
             onClick={() => setMenuOpen(false)}
-            className={`text-xl font-black tracking-tight transition-colors duration-300 ${
-              // On mobile the hero has a dark top scrim, so the logo stays white;
-              // on desktop (no scrim) it's ink over the light hero half.
-              dark ? "text-white" : "text-white md:text-[#1A1A1A]"
-            }`}
+            aria-label="Fady Eilia Studio"
           >
-            FE<span className="text-accent">.</span>
+            <Image
+              src="/logo/logo.webp"
+              alt="Fady Eilia Studio"
+              width={48}
+              height={48}
+              className={`h-10 w-auto transition-opacity duration-300 ${dark ? "brightness-0 invert" : "brightness-0 md:invert-0"}`}
+              priority
+            />
           </Link>
 
           <ul className="hidden items-center gap-8 md:flex">

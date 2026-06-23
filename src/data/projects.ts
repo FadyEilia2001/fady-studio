@@ -8,6 +8,38 @@
  * sensible defaults — flip any project to `"concept"` to show the Concept badge.
  */
 
+export type FeaturedClient = {
+  slug: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+  url: string;
+};
+
+export const featuredClients: FeaturedClient[] = [
+  {
+    slug: "trinity",
+    name: "Trinity Investee",
+    description: "Nashville general contractor — custom homes, commercial builds, and renovations.",
+    imageUrl: "/assets/projects/linkedProjects/trinity-upscaled-20260622-224528.webp",
+    url: "https://trinity-blond.vercel.app/",
+  },
+  {
+    slug: "cd-studio",
+    name: "CD Studio",
+    description: "Nashville architecture & engineering firm — residential, commercial, and renovation projects.",
+    imageUrl: "/assets/projects/linkedProjects/cdStudio-upscaled-20260622-224432.webp",
+    url: "https://cd-studio-seven.vercel.app/",
+  },
+  {
+    slug: "fady-page",
+    name: "fady.page",
+    description: "Coptic community digital parenting resource — guides, systems, and faith-grounded advice.",
+    imageUrl: "/assets/projects/linkedProjects/fadyPage-upscaled-20260622-225907.webp",
+    url: "https://fady.page/",
+  },
+];
+
 export type Project = {
   slug: string;
   /** Accent color for the gallery tile tint + category label. */
